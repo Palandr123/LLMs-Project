@@ -3,18 +3,19 @@ class Detector:
     Base class for detecting objects.
 
     Attributes:
-        object_lists (list[tuple[str, list[str | None]]]): A list of tuples containing 
-            object names and their corresponding attribute lists. None values in an attribute list 
+        object_lists (list[tuple[str, list[str | None]]]): A list of tuples containing
+            object names and their corresponding attribute lists. None values in an attribute list
             represent primitive objects without attributes.
         primitive_count (dict[str, int]): A dictionary that stores the count of each primitive object.
-        attribute_count (dict[str, int]): A dictionary that stores the count of each unique attribute 
+        attribute_count (dict[str, int]): A dictionary that stores the count of each unique attribute
             combined with its corresponding object name.
-        pred_primitive_count (dict[str, int]): A dictionary that stores the predicted count of each 
+        pred_primitive_count (dict[str, int]): A dictionary that stores the predicted count of each
             primitive object (initially 0, intended for future prediction functionality).
-        pred_attribute_count (dict[str, int]): A dictionary that stores the predicted count of each 
-            unique attribute combined with its corresponding object name (initially 0, intended for 
+        pred_attribute_count (dict[str, int]): A dictionary that stores the predicted count of each
+            unique attribute combined with its corresponding object name (initially 0, intended for
             future prediction functionality).
     """
+
     def __init__(self):
         self.object_lists: list[tuple[str, list[str | None]]] = []
         self.primitive_count: dict[str, int] = {}
@@ -32,8 +33,8 @@ class Detector:
             - Unique attribute combinations with their corresponding object names
 
         Args:
-            object_list (list[tuple[str, list[str | None]]]): A list of tuples containing 
-                object names and their corresponding attribute lists. None values in an attribute list 
+            object_list (list[tuple[str, list[str | None]]]): A list of tuples containing
+                object names and their corresponding attribute lists. None values in an attribute list
                 represent primitive objects without attributes.
         """
         # Reset class variables
