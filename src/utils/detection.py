@@ -2,6 +2,36 @@ import numpy as np
 from numpy.typing import NDArray
 
 
+def class_aware_non_maximum_suppression(
+    scores: NDArray[np.float32],
+    labels: NDArray[np.float32],
+    boxes: NDArray[np.float32],
+    threshold: float,
+) -> tuple[NDArray[np.float32], NDArray[np.float32], NDArray[np.float32]]:
+    if len(boxes) == 0:
+        return np.array([]), np.array([]), np.array([])
+    result_boxes = []
+    result_scores = []
+    result_labels = []
+
+    labels_unique = np.unique(labels)
+    for label in labels_unique:
+        boxes_label = np.array(
+            [box for i, box in enumerate(boxes) if labels[i] == label]
+        )
+        scores_label = [score for i, score in enumerate(scores) if labels[i] == label]
+        labels_label = [label] * len(boxes)
+        (
+            result_scores_label,
+            result_labels_label,
+            result_boxes_label,
+        ) = non_maximum_suppression(scores_label, labels_label, boxes_label, threshold)
+        result_boxes += result_boxes_label
+        result_scores += result_scores_label
+        result_labels += result_labels_label
+    return np.array(result_scores), np.array(result_labels), np.array(result_boxes)
+
+
 def non_maximum_suppression(
     scores: NDArray[np.float32],
     labels: NDArray[np.float32],
