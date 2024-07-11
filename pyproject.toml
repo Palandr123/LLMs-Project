@@ -13,6 +13,10 @@ torchvision = {url = "https://download.pytorch.org/whl/cu117/torchvision-0.15.2%
 transformers = "^4.42.3"
 numpy = "1.26.4"
 inflect = "^7.3.1"
+diffusers = "^0.21.4"
+ipykernel = "^6.29.5"
+accelerate = "^0.32.1"
+scipy = "^1.14.0"
 
 [build-system]
 requires = ["poetry-core"]
