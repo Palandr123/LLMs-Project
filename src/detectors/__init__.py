@@ -1,0 +1,1 @@
+from src.detectors.owlvitv2 import OWLViTv2Detector
