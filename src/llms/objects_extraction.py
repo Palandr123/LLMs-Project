@@ -71,7 +71,7 @@ def spot_objects(
     **model_params: dict,
 ) -> dict[str, str | list[tuple[str, list[str | None]]]]:
     """
-    This function identifies objects mentioned in a given prompt using a pre-trained 
+    This function identifies objects mentioned in a given prompt using a pre-trained
     tokenizer and model.
 
     Args:
